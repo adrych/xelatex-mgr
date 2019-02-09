@@ -1,0 +1,11 @@
+\section{Pozyskanie danych}
+Podstawowym źródłem danych dla niniejszej pracy jest kamera wideo z możliwością zakodowania pozycji geograficznej, w której znajdowała się kamera w momencie filmowania. Kamera GoPRO Hero\cite{goprodata} od wersji 5 poza obrazem video rejestruje dane m.in. bieżącej prędkości, lokalizacji, kierunku ruchu, przeciążenia itp.
+Dane te zapisywane są wraz z obrazem w strumieniu video, w formacie mp4. Korzystając z zewnętrznych narzędzi\cite{goprotools1}\cite{goprotools2} możliwa jest ekstrakcja tych danych do jednego z otwartych formatów danych.\newline
+Obraz video kodowany jest przy użyciu kodeka w standardzie MPEG-4 Part 14 i zapisywany jest z rozszerzeniem mp4.\newline Po uzyskaniu dwóch ujęć tego samego obiektu, znając dokładną lokalizację miejsca skąd wykonano oba ujęcia oraz kierunek, w którym należałoby się udać z obu miejsc aby dotrzeć do rozpoznanego obiektu (a ang: bearings) można obliczyć położenie obiektu.
+Jak podaje źródło\cite{bearings}\newline
+Formula--- odległość kątowa pomiędzy p1 --- p2\newline
+\begin{math}\delta_{12} = 2\arcsin( \sqrt{(sin^2(\frac{\Delta\varphi}{2}) + \cos\varphi_{1} * \cos \varphi_{2} * sin^2(\frac{\Delta\lambda}{2}))}) \newline
+\theta_{a} = \arccos(\frac{(sin\varphi_{2} - sin\varphi_{1}* \cos\delta_{12}) }{ (sin\theta_{12}*\cos\varphi_{1})})\newline
+\theta _{b} = \arccos(\frac{(sin\varphi_{1} - sin\varphi_{2}*\cos\delta_{12}) }{ (sin\theta_{12}*\cos\varphi_{2})}) 
+\end{math}\newline
+\todo{Dokonczyc rownania}
